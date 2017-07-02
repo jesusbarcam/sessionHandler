@@ -1,6 +1,7 @@
 import{ BrowserModule } from '@angular/platform-browser';
 import{ NgModule } from '@angular/core';
 import{ AppRoutingModule } from './app.routing';
+import{ SessionHandlerModule } from './lib/sessionHandler.module';
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/landingPage/landingPage.component';
@@ -10,7 +11,8 @@ import { PageNotFoundComponent } from './components/pageNotFound/pageNotFound.co
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SessionHandlerModule
   ],
   
   declarations: [

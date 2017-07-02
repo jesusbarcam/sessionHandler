@@ -11,7 +11,7 @@ export class SessionSettings {
   private _autoInit:boolean;
   private _countdownNotification:boolean;
 
-  
+
 
 
   public get routeParams(){ return this._routeParams;}

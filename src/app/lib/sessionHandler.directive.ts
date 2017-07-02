@@ -30,9 +30,9 @@ export class SessionHandlerDirective implements OnInit,OnDestroy {
   private timeout:any;
   private numTime:any;
 
+
   @Input('sessionSettings')
   private sessionSettings:SessionSettings;
-
 
   @Output('onEndsession')
   private onEndsession:EventEmitter<any>;

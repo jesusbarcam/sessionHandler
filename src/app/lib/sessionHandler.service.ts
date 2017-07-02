@@ -18,8 +18,19 @@ export class SessionHandlerService {
   private static DEFAULT_ROUTE_LOCATION_WHEN_END_SESSION:string = '';
   private static DEFAULT_IS_ACTIVED:boolean = true;
   private static DEFAULT_REDIRECT:boolean = true;
-  private static DEFAULT_MAX_MINUTES_OF_SESSION:number = 15;//Minutos
+  private static DEFAULT_MAX_MINUTES_OF_SESSION:number = 1;//Minutos
   private static DEFAULT_COUNTDOWN_NOTIFICATION:boolean = true;
+
+
+  constructor() {
+    this._isActived = SessionHandlerService.DEFAULT_IS_ACTIVED;
+    this._redirect = SessionHandlerService.DEFAULT_REDIRECT;
+    this._routeLocationWhenEndSession = SessionHandlerService.DEFAULT_ROUTE_LOCATION_WHEN_END_SESSION;
+    this._maxMinutesOfSession = SessionHandlerService.DEFAULT_MAX_MINUTES_OF_SESSION;
+    this._countdownNotification = SessionHandlerService.DEFAULT_COUNTDOWN_NOTIFICATION;
+    this._routeParams = null;
+  }//constructor
+
 
 
   /**
@@ -32,17 +43,20 @@ export class SessionHandlerService {
    */
   public configure( settings:SessionSettings ) {
 
-    this._isActived = settings.autoInit || SessionHandlerService.DEFAULT_IS_ACTIVED;
-    this._redirect = settings.redirect || SessionHandlerService.DEFAULT_REDIRECT;
-    this._routeLocationWhenEndSession = settings.routeLocationWhenEndSession || SessionHandlerService.DEFAULT_ROUTE_LOCATION_WHEN_END_SESSION;
-    this._maxMinutesOfSession = settings.maxMinutesOfSession || SessionHandlerService.DEFAULT_MAX_MINUTES_OF_SESSION;
-    this._countdownNotification = settings.countdownNotification || SessionHandlerService.DEFAULT_COUNTDOWN_NOTIFICATION;
-    this._routeParams = settings.routeParams || null;
+    if( settings ) {
+      this._isActived = settings.autoInit || SessionHandlerService.DEFAULT_IS_ACTIVED;
+      this._redirect = settings.redirect || SessionHandlerService.DEFAULT_REDIRECT;
+      this._routeLocationWhenEndSession = settings.routeLocationWhenEndSession || SessionHandlerService.DEFAULT_ROUTE_LOCATION_WHEN_END_SESSION;
+      this._maxMinutesOfSession = settings.maxMinutesOfSession || SessionHandlerService.DEFAULT_MAX_MINUTES_OF_SESSION;
+      this._countdownNotification = settings.countdownNotification || SessionHandlerService.DEFAULT_COUNTDOWN_NOTIFICATION;
+      this._routeParams = settings.routeParams || null;
+    }//if
   
   }//configure
 
   
   
+
   /**
    * @public 
    * @method
